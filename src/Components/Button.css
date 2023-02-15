@@ -1,0 +1,12 @@
+button {
+  margin: 10px;
+  font-size: 24px;
+  min-height: 50px;
+  min-width: 100px;
+  border-radius: 15%;
+  color: rgb(67, 120, 218);
+  background-color: rgb(151, 183, 243);
+}
+button:active {
+  background-color: rgb(209, 97, 185);
+}

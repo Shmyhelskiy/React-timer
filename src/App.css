@@ -1,0 +1,32 @@
+.timer {
+  display: flex;
+  margin-top: 50px;
+  justify-content: center;
+}
+.timer-number {
+  font-size: 70px;
+  padding-left: 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  margin: 20px;
+  display: flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+}
+.input-container label {
+  margin-bottom: 10px;
+}
+.input-box {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
