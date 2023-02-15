@@ -47,8 +47,9 @@ function App() {
       }
     },
     takeStep = (event) => {
-      event.target.value <= 0 ? event.target.value = 1 : 
-      setStep((step) => (step = event.target.value * 1000));
+      event.target.value <= 0
+        ? (event.target.value = 1)
+        : setStep((step) => (step = event.target.value * 1000));
     };
 
   return (
