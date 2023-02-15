@@ -9,7 +9,7 @@ function App() {
     [fullTime, setFullTime] = useState(120),
     [wight, setWight] = useState(100),
     [step, setStep] = useState(1000);
-  console.log(step);
+
   const minutes = getPadTime(Math.floor(timeLeft / 60)),
     seconds = getPadTime(timeLeft - minutes * 60);
 
@@ -47,6 +47,7 @@ function App() {
       }
     },
     takeStep = (event) => {
+      event.target.value <= 0 ? event.target.value = 1 : 
       setStep((step) => (step = event.target.value * 1000));
     };
 
