@@ -9,7 +9,7 @@ function App() {
     [fullTime, setFullTime] = useState(120),
     [wight, setWight] = useState(100),
     [step, setStep] = useState(1000);
-
+  console.log(step);
   const minutes = getPadTime(Math.floor(timeLeft / 60)),
     seconds = getPadTime(timeLeft - minutes * 60);
 
@@ -17,15 +17,15 @@ function App() {
     const interval = setInterval(() => {
       isCounting &&
         setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 1 : 0));
-    }, 1000);
+    }, step);
     return () => {
       clearInterval(interval);
     };
-  }, [isCounting]);
+  }, [isCounting, step]);
 
   useEffect(() => {
-    isCounting && setWight((wight) => (wight = (timeLeft * 100) / fullTime));
-  }, [isCounting, fullTime, timeLeft]);
+    setWight((wight) => (wight = (timeLeft * 100) / fullTime));
+  }, [fullTime, timeLeft]);
 
   const handleStat = () => setIsCounting(true),
     handleStop = () => setIsCounting(false),
@@ -45,8 +45,10 @@ function App() {
         setTimeLeft(event.target.value * 60);
         setFullTime((fullTime) => (fullTime = Number(event.target.value) * 60));
       }
+    },
+    takeStep = (event) => {
+      setStep((step) => (step = event.target.value * 1000));
     };
-
 
   return (
     <div className="App">
@@ -58,6 +60,15 @@ function App() {
             name="time"
             placeholder="Minutes"
             onChange={handelChange}
+          />
+        </div>
+        <div className="input-box">
+          <label htmlFor="step"> Write time for timer step in seconds </label>
+          <input
+            type="number"
+            name="step"
+            placeholder="Step"
+            onChange={takeStep}
           />
         </div>
       </div>
