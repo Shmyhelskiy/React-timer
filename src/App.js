@@ -27,30 +27,32 @@ function App() {
     setWight((wight) => (wight = (timeLeft * 100) / fullTime));
   }, [fullTime, timeLeft]);
 
-  const handleStat = () => setIsCounting(true),
-    handleStop = () => setIsCounting(false),
-    handleReset = () => {
-      setIsCounting(false);
-      setTimeLeft(0);
-      setWight(100);
-    },
-    handelChange = (event) => {
-      if (event.target.value > 60) {
-        setTimeLeft(60 * 60);
-        setFullTime((fullTime) => (fullTime = 60 * 60));
-      } else if (event.target.value <= 0) {
-        setTimeLeft(120);
-        setFullTime((fullTime) => (fullTime = 120));
-      } else {
-        setTimeLeft(event.target.value * 60);
-        setFullTime((fullTime) => (fullTime = Number(event.target.value) * 60));
-      }
-    },
-    takeStep = (event) => {
-      event.target.value <= 0
-        ? (event.target.value = 1)
-        : setStep((step) => (step = event.target.value * 1000));
-    };
+  const handleStart = () => setIsCounting(true);
+  const handleStop = () => setIsCounting(false);
+  const handleReset = () => {
+    setIsCounting(false);
+    setTimeLeft(0);
+    setWight(100);
+  };
+
+  const handelChange = (event) => {
+    if (event.target.value > 60) {
+      setTimeLeft(60 * 60);
+      setFullTime((fullTime) => (fullTime = 60 * 60));
+    } else if (event.target.value <= 0) {
+      setTimeLeft(120);
+      setFullTime((fullTime) => (fullTime = 120));
+    } else {
+      setTimeLeft(event.target.value * 60);
+      setFullTime((fullTime) => (fullTime = Number(event.target.value) * 60));
+    }
+  };
+
+  const takeStep = (event) => {
+    event.target.value <= 0
+      ? (event.target.value = 1)
+      : setStep((step) => (step = event.target.value * 1000));
+  };
 
   return (
     <div className="App">
@@ -82,7 +84,7 @@ function App() {
       </div>
       <div className="buttons">
         {!isCounting ? (
-          <Button text="Start" fixTme={handleStat} />
+          <Button text="Start" fixTme={handleStart} />
         ) : (
           <Button text="Stop" fixTme={handleStop} />
         )}
